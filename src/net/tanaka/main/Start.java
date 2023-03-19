@@ -6,6 +6,7 @@ import org.newdawn.slick.AppGameContainer;
 import org.newdawn.slick.BasicGame;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
+import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
 
 import net.tanaka.heper.OSHelper.OSType;
@@ -15,7 +16,7 @@ import net.tanaka.setting.LauncherSettings;
 
 public class Start extends BasicGame {
 	
-	public static String TITLE = "KotaLauncher",
+	public static String TITLE = "AnniLauncher",
 			VERSION = "1.0";
 
 	private static final Start INSTANCE = new Start(String.format("%s %s", TITLE, VERSION));
@@ -47,7 +48,9 @@ public class Start extends BasicGame {
 			}
 		}
 		final AppGameContainer app = new AppGameContainer(INSTANCE);
-		app.setDisplayMode(800, 600, false);
+		
+		app.setIcon("resources/appicon.png");
+		app.setDisplayMode(1080, 800, false);
 		app.setShowFPS(LauncherSettings.DEBUG.getValue());
 		app.setTargetFrameRate(LauncherSettings.FPS.getValue());
 		INSTANCE.currentRenderer = new MainRenderer();
