@@ -1,12 +1,6 @@
 package net.tanaka.main;
 
 import java.io.File;
-import java.io.IOException;
-import java.net.URI;
-import java.net.URISyntaxException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 
 import org.newdawn.slick.AppGameContainer;
 import org.newdawn.slick.BasicGame;
@@ -15,8 +9,9 @@ import org.newdawn.slick.Graphics;
 import org.newdawn.slick.SlickException;
 
 import net.tanaka.heper.OSHelper.OSType;
+import net.tanaka.render.SceneRenderer;
+import net.tanaka.render.impl.MainRenderer;
 import net.tanaka.setting.LauncherSettings;
-import net.tanaka.version.Client;
 
 public class Start extends BasicGame {
 	
@@ -41,9 +36,7 @@ public class Start extends BasicGame {
 		else OS = null;
 	}
 	
-	public Start(final String title) {
-		super(title);
-	}
+	private SceneRenderer currentRenderer;
 	
 	public static void main(final String[] args) throws SlickException {
 		if (!ROOT.exists()) ROOT.mkdirs();
@@ -57,31 +50,27 @@ public class Start extends BasicGame {
 		app.setDisplayMode(800, 600, false);
 		app.setShowFPS(LauncherSettings.DEBUG.getValue());
 		app.setTargetFrameRate(LauncherSettings.FPS.getValue());
-		/*try {
-			new Client(new File(VER_ROOT, "1.8.8")).launch();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}*/
+		INSTANCE.currentRenderer = new MainRenderer();
 		app.start();
-		
 	}
-
+	
+	public Start(final String title) {
+		super(title);
+	}
+	
 	@Override
 	public void render(GameContainer arg0, Graphics arg1) throws SlickException {
-		// TODO Auto-generated method stub
-		
+		INSTANCE.currentRenderer.render(arg0, arg1);
 	}
 
 	@Override
 	public void init(GameContainer arg0) throws SlickException {
-		// TODO Auto-generated method stub
-		
+		INSTANCE.currentRenderer.init(arg0);
 	}
 
 	@Override
 	public void update(GameContainer arg0, int arg1) throws SlickException {
-		// TODO Auto-generated method stub
-		
+		INSTANCE.currentRenderer.update(arg0, arg1);
 	}
 
 }
