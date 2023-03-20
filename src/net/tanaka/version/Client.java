@@ -79,7 +79,7 @@ public class Client {
 				}
 			});
 		}
-		assetsDownload:{
+		/*assetsDownload:{
 			final File ASSETS = new File(Start.ASS_ROOT, this.NAME);
 			boolean shouldDL = false;
 			if (!ASSETS.exists()) {
@@ -104,7 +104,7 @@ public class Client {
 				}
 				
 			}
-		}
+		}*/
 		final char pre = Start.OS == OSType.LINUX ? ':' : ';';
 		final StringBuffer cmd = new StringBuffer(String.format("java -Djava.library.path=%s -cp %s", LWJGLHelper.NATIVE_ROOT.getAbsolutePath(), JAR.getAbsolutePath()));
 		cmd.append(pre);
