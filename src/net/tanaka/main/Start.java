@@ -73,7 +73,7 @@ public class Start extends BasicGame {
 
 	@Override
 	public void update(GameContainer arg0, int arg1) throws SlickException {
-		INSTANCE.currentRenderer.update(arg0, arg1);
+		INSTANCE.currentRenderer.update(arg0, null, arg1);
 	}
 
 }
