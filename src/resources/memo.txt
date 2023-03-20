@@ -1,0 +1,3 @@
+Text Color:F4F4F4
+Client Background Color:2C2C2C
+Selected Client Background Color:4CE134

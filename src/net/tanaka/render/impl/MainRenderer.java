@@ -16,6 +16,8 @@ public class MainRenderer extends SceneRenderer {
 	private Image title = null;
 	private Image launch = null;
 	private Image launched = null;
+	private Image mania = null;
+	private Image maniaselected = null;
 	private int buttonX, buttonY; // ボタンの位置
     private boolean isPressed = false; // ボタンが押されたかどうか
     private long pressedTime = 0; // ボタンが押された時刻
@@ -23,7 +25,16 @@ public class MainRenderer extends SceneRenderer {
 	@Override
 	public void init(GameContainer game) throws SlickException {
 		
+		title = new Image("resources/title.png");
+		
         launch = new Image("resources/launch.png");
+        
+        launched = new Image("resources/launched.png");
+        
+        mania = new Image("resources/Mania.png");
+        
+        maniaselected = new Image("resources/ManiaSelected.png");
+        
         buttonX = 750;
         buttonY = 680;
     }
@@ -35,13 +46,16 @@ public class MainRenderer extends SceneRenderer {
 		graphic.setColor(new Color(0xff363636));
 		graphic.fillRect (0, 0, 1080, 800);
 		
-		title = new Image("resources/title.png");
+		graphic.setColor(new Color(0xff2C2C2C));
+		graphic.fillRect (0, 0, 300, 1080);
+		
 		title.draw();
+		
+		mania.draw(0, 56);
 	
         launch.draw(buttonX, buttonY);
         
         if (isPressed && System.currentTimeMillis() - pressedTime < 1000) {
-            launched = new Image("resources/launched.png");
             launched.draw(buttonX, buttonY); }
      }
 		// TODO Auto-generated method stub
